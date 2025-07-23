@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-g">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Face Mask Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        #video-container {
+            border: 2px solid #333;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 720px;
+            margin: 1rem auto;
+            background-color: #000;
+            min-height: 480px; /* Default height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #video-feed {
+            border-radius: 6px;
+            display: none; /* Hidden by default */
+        }
+        #start-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+        #start-button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            width: 100%;
+            background-color: #1f1f1f;
+            color: #a0a0a0;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Live Face Mask Detector</h1>
+        <div id="video-container">
+            <img id="video-feed" width="100%">
+        </div>
+        <button id="start-button">Start Detection</button>
+    </div>
+
+    <footer>
+        <p><strong>Created by:</strong> Kalyan</p>
+        <p><strong>Contact:</strong> 8317593773 | <strong>Email:</strong> <a href="mailto:kalyan24252@gmail.com">kalyan24252@gmail.com</a></p>
+        <p>
+            <a href="https://www.linkedin.com/in/kalyan-ram-garaga" target="_blank">LinkedIn</a> | 
+            <a href="https://github.com/Bunty722" target="_blank">GitHub for More Projects</a>
+        </p>
+    </footer>
+
+    <script>
+        const startButton = document.getElementById('start-button');
+        const videoFeed = document.getElementById('video-feed');
+        const videoContainer = document.getElementById('video-container');
+
+        startButton.addEventListener('click', () => {
+            // Set the src of the img tag to start the video stream
+            videoFeed.src = "{{ url_for('video_feed') }}";
+            // Show the video feed
+            videoFeed.style.display = 'block';
+            // Hide the button
+            startButton.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
